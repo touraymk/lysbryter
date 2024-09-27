@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lyspære</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script>
+      const outputHtml = document.getElementById("app");
+      let isOn = false;
+
+      updateView();
+      function updateView() {
+        outputHtml.innerHTML = /*html*/ `
+          <div id="lightSwitch"></div>
+        `;
+
+        outputHtml.style.backgroundColor = "#555555";
+        outputHtml.style.padding = "200px";
+
+        const lightSwitch = document.getElementById("lightSwitch");
+
+        lightSwitch.style.display = "flex";
+        lightSwitch.style.justifyContent = "center";
+        lightSwitch.style.textAlign = "center";
+
+        createLightSwitch();
+      }
+
+      function createLightSwitch() {
+        lightSwitch.innerHTML += /*html*/ `
+        <div id="btnContainer">
+          <div id="onButton" onclick="onSwitch()"></div>
+          <hr />
+          <div id="offButton" onclick="offSwitch()"></div>
+        </div>
+        `;
+
+        let button = document.getElementById("btnContainer");
+        button.style.border = "16px solid white";
+        button.style.backgroundColor = "white";
+        button.style.padding = "40px";
+
+        onSwitch();
+        offSwitch();
+      }
+
+      function onSwitch() {
+        if (isOn) {
+          outputHtml.style.backgroundColor = "#ffff00";
+        }
+
+        isOn = true;
+
+        let switchOn = document.getElementById("onButton");
+        switchOn.textContent = "ON";
+        switchOn.style.fontSize = "x-large";
+        switchOn.style.verticalAlign = "center";
+        switchOn.style.color = "green";
+        switchOn.style.borderTop = "3px";
+        switchOn.style.padding = "34px";
+      }
+
+      function offSwitch() {
+        if (!isOn) {
+          outputHtml.style.backgroundColor = "#555555";
+        }
+
+        isOn = false;
+
+        let switchOff = document.getElementById("offButton");
+        console.log(switchOff);
+        switchOff.textContent = "OFF";
+        switchOff.style.fontSize = "x-large";
+        switchOff.style.verticalAlign = "center";
+        switchOff.style.color = "red";
+        switchOff.style.padding = "30px";
+      }
+    </script>
+  </body>
+</html>
